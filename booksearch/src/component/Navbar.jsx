@@ -33,12 +33,12 @@ const Navbar = () => {
                 <div className=" w-full flex flex-col gap-3 ">
                     <h3 className='mt-0 text-2xl w-full py-3 mb-4 bg-[#437057] text-white  text-center font-bold '>Book See</h3>
 
-              
-          
+
+
                     <Link to='/home' className='text-2xl mx-5 hover:font-bold'>Home</Link>
-                <Link to='/about' className='text-2xl mx-5 hover:font-bold'>About</Link>
-          
-  </div>
+                    <Link to='/about' className='text-2xl mx-5 hover:font-bold'>About</Link>
+
+                </div>
 
             </List>
         </Box>
@@ -75,10 +75,15 @@ const Navbar = () => {
                 </div>
             </nav>
             {/* Hero section */}
-            <div className='' style={{ backgroundImage:"../assets/p1.jpg", backgroundSize: 'cover', height: '400px', backgroundPosition: 'center' }}>
-<div className=' bg-black bg-opacity-50 p-8 rounded-lg text-center'>
-    <h1 className='text-4xl text-white md:text-6xl font-bold mb-5'>Find Your Favourite Book</h1>
-</div>
+            <div className='h-screen bg-cover bg-center flex flex-col justify-center items-center text-white' style={{ backgroundImage: "url( 'https://images.pexels.com/photos/3132530/pexels-photo-3132530.jpeg')", backgroundSize: 'cover', height: '550px', backgroundPosition: 'center' }}>
+                <div className=' bg-black opacity-50 p-8 rounded-lg text-center'>
+                    <h1 className='text-4xl text-white md:text-6xl font-bold mb-5'>Find Your Favourite Book</h1>
+                    <p className='text-lg mb-10 text-white max-w-md mx-auto'>Search books by title or keyword</p>
+                    <div className="flex w-4/5 md:w-full">
+                        <input type="text" placeholder='Search Books' className='w-full text-white p-2 outline-none border-1 rounded-l-lg' />
+                        <button className='bg-yellow-500 text-black px-6 rounded-r-lg font-semibold hover:bg-yellow-400'>Search</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
