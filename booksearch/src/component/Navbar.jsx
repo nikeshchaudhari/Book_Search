@@ -3,21 +3,15 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { IoCloseSharp } from "react-icons/io5";
-import p1 from '../assets/p1.jpg';
+
 
 
 import DehazeIcon from '@mui/icons-material/Dehaze';
+import BookSearch from './BookSearch';
 const Navbar = () => {
+    const [searchbook, setSearchBook] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -28,13 +22,10 @@ const Navbar = () => {
     };
 
     const DrawerList = (
-        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+        <Box sx={{ width: 400 }} role="presentation" onClick={toggleDrawer(false)}>
             <List>
                 <div className=" w-full flex flex-col gap-3 ">
                     <h3 className='mt-0 text-2xl w-full py-3 mb-4 bg-[#437057] text-white  text-center font-bold '>Book See</h3>
-
-
-
                     <Link to='/home' className='text-2xl mx-5 hover:font-bold'>Home</Link>
                     <Link to='/about' className='text-2xl mx-5 hover:font-bold'>About</Link>
 
@@ -75,16 +66,17 @@ const Navbar = () => {
                 </div>
             </nav>
             {/* Hero section */}
-            <div className='h-screen bg-cover bg-center flex flex-col justify-center items-center text-white' style={{ backgroundImage: "url( 'https://images.pexels.com/photos/3132530/pexels-photo-3132530.jpeg')", backgroundSize: 'cover', height: '550px', backgroundPosition: 'center' }}>
+            <div className='h-screen bg-cover bg-center flex flex-col justify-center items-center text-white' style={{ backgroundImage: "url( 'https://images.pexels.com/photos/3132530/pexels-photo-3132530.jpeg')", backgroundSize: 'cover', height: '450px', backgroundPosition: 'center' }}>
                 <div className=' bg-black opacity-50 p-8 rounded-lg text-center'>
                     <h1 className='text-4xl text-white md:text-6xl font-bold mb-5'>Find Your Favourite Book</h1>
                     <p className='text-lg mb-10 text-white max-w-md mx-auto'>Search books by title or keyword</p>
-                    <div className="flex w-4/5 md:w-full">
-                        <input type="text" placeholder='Search Books' className='w-full text-white p-2 outline-none border-1 rounded-l-lg' />
+                    <div className="flex w-full md:w-full">
+                        <input type="text" value={searchbook} onChange={(e) => setSearchBook(e.target.value)} placeholder='Search Books' className='w-full text-white p-2 outline-none border-1 rounded-l-lg' />
                         <button className='bg-yellow-500 text-black px-6 rounded-r-lg font-semibold hover:bg-yellow-400'>Search</button>
                     </div>
                 </div>
             </div>
+            <BookSearch searchbook={searchbook} />
         </div>
     )
 }
