@@ -12,6 +12,7 @@ import DehazeIcon from '@mui/icons-material/Dehaze';
 import BookSearch from './BookSearch';
 const Navbar = () => {
     const [searchbook, setSearchBook] = useState("");
+    const [selectBook,setSelectBook]= useState(null)
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
