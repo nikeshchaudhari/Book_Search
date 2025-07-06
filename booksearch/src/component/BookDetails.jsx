@@ -1,19 +1,26 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react'
+import book from '../books'
+import { useNavigate, useParams } from 'react-router-dom'
+const BookDetails = () => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const books = book.find(b => b.id === Number(id));
 
-const BookDetials = ({ book }) => {
-    const navigate = useNavigate();
-    const {id} = useParams()
+  if (!books) {
+    return <h2 className="text-center text-2xl mt-10 text-red-600">Book Not Found</h2>
 
-    return (
-        <>
-            <div className="max-w-xl mx-auto mt-10 border rounded-md p-5 shadow-md bg-white">
-                <img src={book.image} alt={book.title} className="w-full h-64 object-cover mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{book.title}</h2>
-                <p className="font-semibold">Author: {book.author}</p>
-                <p className="mt-3">{book.description}</p>
-                <button onClick={() => navigate(1)} className="mt-5 px-4 py-2 cursor-pointer bg-[#437057] text-white rounded hover:bg-[#365944]">Back</button>
-            </div>
-        </>
-    )
+  }
+  return (
+    <div className='mx-10 mt-10 flex flex-row gap-10 justify-center'>
+      <img src={books.image} alt={books.title} width="300px" />
+      <div className='mt-20'>
+        <h2 className="text-2xl font-bold mb-2">{books.title}</h2>
+        <p className="font-semibold">Author: {books.author}</p>
+        <p className="mt-3 w-[300px] ">{books.description}</p>
+<button onClick={()=> navigate(-1)} className='bg-[#437057] min-w-[100px] text-white rounded mt-5 py-3 px-2 cursor-pointer hover:bg-[#365944]'>Back</button>
+      </div>
+    </div>
+  )
 }
-export default BookDetials;
+
+export default BookDetails
